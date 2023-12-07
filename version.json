@@ -1,0 +1,11 @@
+{
+    "name": "devops-python-app",
+    "version": "1.0",
+    "gitRepoUrl": "https://github.com/das-santu/devops_python.git",
+    "gitCredentialsId": "GIT_ACCESS_TOKEN",
+    "dockerHubRegistryUrl": "https://registry.hub.docker.com",
+    "dockerUser": "santu440",
+    "dockerHubCredentialsId": "DOCKER_HUB_ACCESS_TOKEN",
+    "ansibleInventoryPath": "",
+    "ansiblePlaybookPath": ""
+}
