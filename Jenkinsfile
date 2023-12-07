@@ -21,14 +21,18 @@ pipeline {
                     def appEnv = gv.loadAppEnv()
 
                     // Set environment variables
-                    env.DOCKER_IMAGE_NAME = "${appEnv.dockerUser}/${appEnv.name}:${appEnv.version}.${BUILD_NUMBER}"
-                    env.DOCKER_CONTR_NAME = "${appEnv.name}_${appEnv.version}.${BUILD_NUMBER}"
-                    env.GIT_REPO_URL = appEnv.gitRepoUrl
-                    env.GIT_CREDENTIALS_ID = appEnv.gitCredentialsId
-                    env.DOCKER_HUB_REGISTRY_URL = appEnv.dockerHubRegistryUrl
-                    env.DOCKER_HUB_CREDENTIALS_ID = appEnv.dockerHubCredentialsId
-                    env.ANSIBLE_INVENTORY_PATH = appEnv.ansibleInventoryPath
-                    env.ANSIBLE_PLAYBOOK_PATH = appEnv.ansiblePlaybookPath
+                    env.VERSION = "${appEnv.VERSION}.${BUILD_NUMBER}"
+                    env.APP_NAME = appEnv.NAME
+                    env.APP_PORT = appEnv.APP_PORT
+                    env.GIT_REPO_URL = appEnv.GIT_REPO_URL
+                    env.GIT_CREDENTIALS_ID = appEnv.GIT_CREDENTIALS_ID
+                    env.DOCKER_IMAGE_NAME = "${appEnv.DOCKER_HUB_USER}/${appEnv.NAME}:${appEnv.VERSION}.${BUILD_NUMBER}"
+                    env.DOCKER_HUB_REGISTRY_URL = appEnv.DOCKER_HUB_REGISTRY_URL
+                    env.DOCKER_HUB_CREDENTIALS_ID = appEnv.DOCKER_HUB_CREDENTIALS_ID
+                    env.PROD_SERVER_PORT = appEnv.PROD_SERVER_PORT
+                    env.MASTER_SERVER_CRED_ID = appEnv.MASTER_SERVER_CRED_ID
+                    env.PROD_SERVER_USER = appEnv.PROD_SERVER_USER
+                    env.PROD_SERVER_HOST = appEnv.PROD_SERVER_HOST
                 }
             }
         }
@@ -79,7 +83,7 @@ pipeline {
 
         stage('Test Docker Image') {
             steps {
-                // Implement your Docker image testing here
+                // Run tests on the Docker image
                 script {
                     gv.testApp()
                 }
