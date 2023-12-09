@@ -5,7 +5,7 @@ pipeline {
 
     stages {
 
-        stage('Init') { 
+        stage('Script Initialization') { 
             steps { 
                 // Load groove script here
                 script { 
@@ -26,7 +26,7 @@ pipeline {
                     env.APP_PORT = appEnv.APP_PORT
                     env.GIT_REPO_URL = appEnv.GIT_REPO_URL
                     env.GIT_CREDENTIALS_ID = appEnv.GIT_CREDENTIALS_ID
-                    env.DOCKER_IMAGE_NAME = "${appEnv.DOCKER_HUB_USER}/${appEnv.NAME}:${appEnv.VERSION}.${BUILD_NUMBER}"
+                    env.DOCKER_IMAGE_NAME = "${appEnv.DOCKER_HUB_USER}/${appEnv.NAME}:${appEnv.VERSION}"
                     env.DOCKER_HUB_REGISTRY_URL = appEnv.DOCKER_HUB_REGISTRY_URL
                     env.DOCKER_HUB_CREDENTIALS_ID = appEnv.DOCKER_HUB_CREDENTIALS_ID
                     env.PROD_SERVER_PORT = appEnv.PROD_SERVER_PORT

@@ -1,12 +1,11 @@
-FROM python:3.10-alpine
+FROM python:3.10-slim
 
-WORKDIR /python-docker
+RUN apt-get update && apt-get install -y curl
 
-COPY requirements.txt requirements.txt
-RUN pip3 install -r requirements.txt
+WORKDIR /app
 
-RUN apk add --update curl
+COPY . /app
 
-COPY . .
+RUN pip install --no-cache-dir -r requirements.txt
 
-CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
+CMD [ "python", "-m" , "flask", "run", "--host=0.0.0.0"]

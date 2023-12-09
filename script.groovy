@@ -20,13 +20,13 @@ def unitTest() {
 }
 
 def buildApp() {
-    sh "docker build . -t ${env.DOCKER_IMAGE_NAME}"
+    sh 'make docker-build'
 }
 
 def testApp() {
     docker.image(env.DOCKER_IMAGE_NAME).withRun("-p ${env.APP_PORT}:${env.APP_PORT}") { c ->
         // Customize testing commands based on your needs
-        sh 'sleep 10'
+        sh 'sleep 5'
         sh "curl -I http://localhost:${env.APP_PORT}/"
         sh "curl -I http://localhost:${env.APP_PORT}/app"
         // Add more testing commands as needed

@@ -12,13 +12,27 @@ class FlaskAppTestCase(unittest.TestCase):
         # Test the main route "/"
         response = self.app.get("/")
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.data.decode("utf-8"), "Welcome!")
 
-    def test_hello_route(self):
-        # Test the "/app" route
+        # Load the rendered HTML template
+        rendered_html = response.get_data(as_text=True)
+
+        # Check specific content within the HTML
+        self.assertIn("<!DOCTYPE html>", rendered_html)
+        self.assertIn("<title>Welcome!</title>", rendered_html)
+        # Add more assertions based on your template content
+
+    def test_app_route(self):
+        # Test the main route "/"
         response = self.app.get("/app")
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.data.decode("utf-8"), "This is the App Section!!")
+
+        # Load the rendered HTML template
+        rendered_html = response.get_data(as_text=True)
+
+        # Check specific content within the HTML
+        self.assertIn("<!DOCTYPE html>", rendered_html)
+        self.assertIn("<title>App!</title>", rendered_html)
+        # Add more assertions based on your template content
 
 
 if __name__ == "__main__":

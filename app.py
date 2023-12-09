@@ -1,17 +1,19 @@
-from flask import Flask
+from settings import app_info
+from flask import Flask, render_template
+
 
 app = Flask(__name__)
 
 
 @app.route("/")
 def main():
-    return "Welcome!"
+    return render_template("index.html")
 
 
 @app.route("/app")
 def hello():
-    return "This is the App Section!!"
+    return render_template("app.html")
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port=int(app_info().get("APP_PORT", 5000)))
