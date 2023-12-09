@@ -21,7 +21,7 @@ pipeline {
                     def appEnv = gv.loadAppEnv()
 
                     // Set environment variables
-                    env.VERSION = ${appEnv.VERSION}
+                    env.VERSION = appEnv.VERSION
                     env.APP_NAME = appEnv.NAME
                     env.APP_PORT = appEnv.APP_PORT
                     env.GIT_REPO_URL = appEnv.GIT_REPO_URL
