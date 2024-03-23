@@ -15,11 +15,38 @@
             color: aliceblue;
             font-size: 100px;
         }
+
+        table,
+        th,
+        td {
+            border-collapse: collapse;
+            color: white;
+            font-size: 20px;
+        }
+
+        .center {
+            margin-left: auto;
+            margin-right: auto;
+        }
     </style>
 </head>
 
 <body>
     <h1>Welcome!</h1>
+    <hr style="width:30%;color:white">
+    <table class="center">
+        <tr>
+            <td><b>Hostname : </b>{{env_data.HOSTNAME}}</td>
+        </tr>
+        <tr>
+            <td><b>Node IP : </b>{{env_data.NODE_IP}}</td>
+        </tr>
+        <tr>
+            <td><b>Pod IP : </b> {{env_data.POD_IP}}</td>
+        </tr>
+    </table>
+    <hr style="width:30%;color:white">
+    <button style="width: 70px;"><a style="font-size: 15px;" href="/app"><b>App</b></a></button>
 </body>
 
 </html>

@@ -39,6 +39,10 @@ ctest: format lint
 test:
 	$(PYTHON) -m unittest discover -s tests -p "test_*.py" --verbose
 
+# Start the app
+run:
+	$(PYTHON) -m flask run --host=0.0.0.0 --debug
+
 # Clean up virtual environment and generated files
 clean:
 	rm -rf $(VENV_DIR)
